@@ -1,36 +1,20 @@
-import type { LoaderFunction } from 'remix';
-
-export const loader: LoaderFunction = () => {};
-
 export default function Index() {
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="bg-white">
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">
+            HELLO
+          </h2>
+          <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+            WELCOME TO REMIX
+          </p>
+          <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
+            Start building for free, then add a site plan to go live. Account
+            plans unlock additional features.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
