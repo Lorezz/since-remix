@@ -1,0 +1,4 @@
+.ciccio {
+  color: red;
+  @apply font-bold;
+}

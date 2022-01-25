@@ -1,5 +1,5 @@
-import { Link } from 'remix';
-import * as React from 'react';
+import NavBar from './NavBar';
+import Footer from './Footer';
 
 export default function Layout({
   data,
@@ -11,33 +11,12 @@ export default function Layout({
   const user = data?.user;
 
   return (
-    <>
-      <nav className="navbar">
-        <Link to="/" className="logo">
-          Remix
-        </Link>
-
-        <ul className="nav">
-          <li>
-            <Link to="/posts">Posts</Link>
-          </li>
-          {user ? (
-            <li>
-              <form action="/auth/logout" method="POST">
-                <button type="submit" className="btn">
-                  Logout {user?.nick}
-                </button>
-              </form>
-            </li>
-          ) : (
-            <li>
-              <Link to="/auth/login">Login</Link>
-            </li>
-          )}
-        </ul>
-      </nav>
-
-      <div className="container">{children}</div>
-    </>
+    <div className="min-h-screen w-screen flex flex-col">
+      <NavBar user={user} />
+      <div className="grow container max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        {children}
+      </div>
+      <Footer />
+    </div>
   );
 }

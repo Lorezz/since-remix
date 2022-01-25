@@ -59,23 +59,23 @@ function Post() {
   const { post, user } = useLoaderData<LoaderData>();
 
   return (
-    <div>
-      <div className="page-header">
-        <h1>{post.title}</h1>
+    <div className="container">
+      <nav className="page-header">
         <Link to="/posts" className="btn btn-reverse">
           Back
         </Link>
-      </div>
-
-      <div className="page-content">{post.body}</div>
-
-      <div className="page-footer">
-        {user && user.id === post.userId && (
-          <form method="POST">
-            <input type="hidden" name="_method" value="delete" />
-            <button className="btn btn-delete">Delete</button>
-          </form>
-        )}
+      </nav>
+      <div className="prose p-5">
+        <h1 className="uppercase">{post.title}</h1>
+        <div className="text-gray-800 px-2">{post.body}</div>
+        <div className="p-4">
+          {user && user.id === post.userId && (
+            <form method="POST">
+              <input type="hidden" name="_method" value="delete" />
+              <button className="btn btn-delete">Delete</button>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );

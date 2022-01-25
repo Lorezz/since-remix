@@ -11,11 +11,15 @@ import {
 import { getUser } from '~/lib/session.server';
 import type { MetaFunction, LoaderFunction, LinksFunction } from 'remix';
 
-import styles from './tailwind.css';
+import twCss from './tailwind.css';
+import appCss from './styles/app.css';
 import Layout from './components/Layout';
 
 export let links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: styles }];
+  return [
+    { rel: 'stylesheet', href: twCss },
+    { rel: 'stylesheet', href: appCss },
+  ];
 };
 
 export const meta: MetaFunction = () => {

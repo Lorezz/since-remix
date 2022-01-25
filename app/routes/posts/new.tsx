@@ -64,17 +64,19 @@ function NewPost() {
   const actionData = useActionData();
   return (
     <>
-      <div className="page-header">
+      <div className="header prose">
         <h1>New Post</h1>
         <Link to="/posts" className="btn btn-reverse">
           Back
         </Link>
       </div>
 
-      <div className="page-content">
+      <div className="container  px-2 mt-10">
         <form method="POST">
-          <div className="form-control">
-            <label htmlFor="title">Title</label>
+          <div className=" ">
+            <div>
+              <label htmlFor="title">Title</label>
+            </div>
             <input
               type="text"
               name="title"
@@ -93,8 +95,10 @@ function NewPost() {
               ) : null}
             </div>
           </div>
-          <div className="form-control">
-            <label htmlFor="body">Post Body</label>
+          <div className="">
+            <div>
+              <label htmlFor="body">Post Body</label>
+            </div>
             <textarea
               name="body"
               id="body"
@@ -112,7 +116,10 @@ function NewPost() {
               ) : null}
             </div>
           </div>
-          <button type="submit" className="btn btn-block">
+          <button
+            type="submit"
+            className="items-center px-4 py-2 border border-transparent text-md font-medium rounded-md text-white bg-gray-900 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
             Add Post
           </button>
         </form>

@@ -91,47 +91,44 @@ function Login() {
   const actionData = useActionData();
 
   return (
-    <div className="auth-container">
-      <div className="page-header">
-        <h1>Login</h1>
+    <div className="container my-10 flex flex-col justify-center items-center">
+      <div className="header prose">
+        <h2>Login</h2>
       </div>
 
-      <div className="page-content">
-        <form method="POST">
-          <fieldset>
-            <legend>Login or Register</legend>
-            <label>
-              <input
-                type="radio"
-                name="loginType"
-                value="login"
-                defaultChecked={
-                  !actionData?.fields?.loginType ||
-                  actionData?.fields?.loginType === 'login'
-                }
-              />{' '}
-              Login
-            </label>
-
-            <label>
-              <input
-                type="radio"
-                name="loginType"
-                value="register"
-                defaultChecked={actionData?.fields?.loginType === 'register'}
-              />{' '}
-              Register
-            </label>
-          </fieldset>
-          <div className="form-control">
-            <label htmlFor="email">email</label>
+      <div className="mt-5 border border-gray-100 bg-gray-50 rounded-md mx-auto p-5 w-11/12 sm:w-3/4 lg:w-2/5  flex flex-col items-center">
+        <form method="POST" className="w-full">
+          <div className="flex items-center">
             <input
+              type="radio"
+              name="loginType"
+              value="login"
+              defaultChecked={
+                !actionData?.fields?.loginType ||
+                actionData?.fields?.loginType === 'login'
+              }
+            />
+            <label className="px-2">Login</label>
+            <input
+              type="radio"
+              name="loginType"
+              value="register"
+              defaultChecked={actionData?.fields?.loginType === 'register'}
+            />
+            <label className="px-2">Register</label>
+          </div>
+          <div className="my-5">
+            <div>
+              <label htmlFor="email">email</label>
+            </div>
+            <input
+              className="rounded w-full"
               type="text"
               name="email"
               id="email"
               defaultValue={actionData?.fields?.email}
             />
-            <div className="error">
+            <div className="text-red-500 uppercase text-xs pt-2">
               {actionData?.fieldErrors?.email ? (
                 <p
                   className="form-validation-error"
@@ -144,15 +141,18 @@ function Login() {
             </div>
           </div>
 
-          <div className="form-control">
-            <label htmlFor="password">Password</label>
+          <div className="my-5">
+            <div>
+              <label htmlFor="password">Password</label>
+            </div>
             <input
+              className="rounded w-full"
               type="password"
               name="password"
               id="password"
               defaultValue={actionData?.fields?.password}
             />
-            <div className="error">
+            <div className="text-red-500 uppercase text-xs pt-2">
               {actionData?.fieldErrors?.password ? (
                 <p
                   className="form-validation-error"
@@ -165,7 +165,10 @@ function Login() {
             </div>
           </div>
 
-          <button className="btn btn-block" type="submit">
+          <button
+            type="submit"
+            className="items-center px-4 py-2 border border-transparent text-md font-medium rounded-md text-white bg-gray-900 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
             Submit
           </button>
         </form>
