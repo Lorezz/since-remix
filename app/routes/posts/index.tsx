@@ -1,21 +1,25 @@
 import { Link, useLoaderData } from 'remix';
 import { db } from '~/lib/db.server';
 import type { Post } from '@prisma/client';
+import { getUser } from '~/lib/session.server';
+import type { LoaderFunction } from 'remix';
 
-export const loader = async () => {
+export const loader: LoaderFunction = async ({ request }) => {
+  const user = await getUser(request);
   const data = {
     posts: await db.post.findMany({
-      take: 20,
+      take: 50,
       select: { id: true, title: true, createdAt: true },
       orderBy: { createdAt: 'desc' },
     }),
+    user,
   };
 
   return data;
 };
 
 function PostItems() {
-  const { posts } = useLoaderData();
+  const { posts, user } = useLoaderData();
 
   return (
     <>
@@ -24,7 +28,7 @@ function PostItems() {
       </div>
       <div className="my-10 w-full flex flex-row justify-end">
         <div className=" self-end">
-          <Link to="/posts/new">
+          <Link to={user ? '/posts/new' : '/auth/login'}>
             <span className="items-center px-4 py-2 border border-transparent text-md font-medium rounded-md text-white bg-gray-900 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
               + New Post
             </span>

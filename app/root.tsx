@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useCatch,
 } from 'remix';
 import { getUser } from '~/lib/session.server';
 import type { MetaFunction, LoaderFunction, LinksFunction } from 'remix';
@@ -54,12 +55,35 @@ export default function App() {
   );
 }
 
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  switch (caught.status) {
+    case 404: {
+      return (
+        <div className="prose container">
+          <h1 className="uppercase">404 not found</h1>
+        </div>
+      );
+    }
+    case 401: {
+      return (
+        <div className="prose container">
+          <h1 className="uppercase">Sorry, but you have to sign-in before</h1>
+        </div>
+      );
+    }
+    default: {
+      throw new Error(`Unhandled error: ${caught.status}`);
+    }
+  }
+}
 export function ErrorBoundary({ error }: { error: Error }) {
   console.log('ERROR', error);
   return (
     <Layout data={null}>
-      <div>
-        <h1 className="text-red-500 text-lg">Error</h1>
+      <div className="prose container">
+        <h1 className="uppercase">Error</h1>
         <p>{error.message}</p>
       </div>
     </Layout>

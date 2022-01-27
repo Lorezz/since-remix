@@ -130,34 +130,11 @@ function NewPost() {
 
 export default NewPost;
 
-export function CatchBoundary() {
-  const caught = useCatch();
-  const params = useParams();
-  switch (caught.status) {
-    case 404: {
-      return (
-        <div className="error-container">
-          Huh? What the heck is {params.jokeId}?
-        </div>
-      );
-    }
-    case 401: {
-      return (
-        <div className="error-container">
-          Sorry, but {params.jokeId} is not your joke.
-        </div>
-      );
-    }
-    default: {
-      throw new Error(`Unhandled error: ${caught.status}`);
-    }
-  }
-}
+
 
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
-  const { jokeId } = useParams();
   return (
-    <div className="error-container">{`There was an error loading joke by the id ${jokeId}. Sorry.`}</div>
+    <div className="error-container">{`There was an error creating a new post. Sorry.`}</div>
   );
 }
