@@ -51,3 +51,29 @@ rm -rf app
 # copy your app over
 cp -R ../my-old-remix-app/app app
 ```
+
+### setup prisma to manage db
+
+INIT PRISMA
+
+```sh
+npx prisma init --datasource-provider sqlite
+```
+
+EXWEC MIGRATE
+
+```sh
+prisma migrate dev
+```
+
+SEED DATA
+
+```sh
+node ./prisma/seed.js
+```
+
+START THE STUDIO
+
+```sh
+npx prisma studio
+```
