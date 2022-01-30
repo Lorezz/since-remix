@@ -63,7 +63,7 @@ npx prisma init --datasource-provider sqlite
 EXWEC MIGRATE
 
 ```sh
-prisma migrate dev
+npx prisma migrate dev
 ```
 
 SEED DATA
